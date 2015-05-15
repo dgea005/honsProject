@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{alltt}
+
+\begin{document}
+
+
+
+<<tbl1, results = "asis">>=
+library(xtable)
+setwd("../data")
+x = read.table(file = "htmlfeatures.txt", sep = "\t",
+                  header = TRUE, as.is = TRUE)
+rows <- dim(x)[1]
+cols <- dim(x)[2]
+for (i in 1:rows){
+  for (j in 2:cols){
+    x[i, j] <- gsub(pattern = "\\S+",replacement="\\\\CheckmarkBold", x=x[i,j])
+  }
+}
+
+
+tab = xtable(x)
+xtable(tab, rotate.colnames = TRUE, booktabs = TRUE, 
+             include.rownames = FALSE)
+@
+
+
+\end{document}

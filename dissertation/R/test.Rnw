@@ -1,0 +1,11 @@
+\documentclass{article}
+
+\begin{document}
+
+<<ok, fig.align='center', fig.height=8, fig.width=7.5, echo=FALSE>>=
+source(file = "draw.R")
+@
+
+next line
+
+\end{document}

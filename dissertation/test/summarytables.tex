@@ -1,0 +1,103 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{booktabs}
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{alltt}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(xtable)}
+\hlkwd{setwd}\hlstd{(}\hlstr{"../data"}\hlstd{)}
+\hlstd{x} \hlkwb{=} \hlkwd{read.table}\hlstd{(}\hlkwc{file} \hlstd{=} \hlstr{"htmlfeatures.txt"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{"\textbackslash{}t"}\hlstd{,}
+                  \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{as.is} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{rows} \hlkwb{<-} \hlkwd{dim}\hlstd{(x)[}\hlnum{1}\hlstd{]}
+\hlstd{cols} \hlkwb{<-} \hlkwd{dim}\hlstd{(x)[}\hlnum{2}\hlstd{]}
+\hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{rows)\{}
+  \hlkwa{for} \hlstd{(j} \hlkwa{in} \hlnum{2}\hlopt{:}\hlstd{cols)\{}
+    \hlstd{x[i, j]} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlkwc{pattern} \hlstd{=} \hlstr{"\textbackslash{}\textbackslash{}S+"}\hlstd{,}\hlkwc{replacement}\hlstd{=}\hlstr{"\textbackslash{}\textbackslash{}\textbackslash{}\textbackslash{}CheckmarkBold"}\hlstd{,} \hlkwc{x}\hlstd{=x[i,j])}
+  \hlstd{\}}
+\hlstd{\}}
+
+
+\hlstd{tab} \hlkwb{=} \hlkwd{xtable}\hlstd{(x)}
+\hlkwd{xtable}\hlstd{(tab,} \hlkwc{rotate.colnames} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{booktabs} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+             \hlkwc{include.rownames} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\end{kframe}% latex table generated in R 3.1.1 by xtable 1.7-3 package
+% Sat Oct 25 13:18:50 2014
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllllllllllllllllllll}
+  \hline
+ & HTMLFeatures & caption & rownames & colnames & alignment & tags & css & spacing & dec.pl & center & nesting & colours & Border & Width & title & size & bold & to.file & Lines & MathJax \\ 
+  \hline
+1 & hwriterPlus &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  & $\backslash$CheckmarkBold \\ 
+  2 & hwriter &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  &  \\ 
+  3 & stargazer & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  & $\backslash$CheckmarkBold &  \\ 
+  4 & texreg & $\backslash$CheckmarkBold &  &  &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  &  & $\backslash$CheckmarkBold &  &  &  \\ 
+  5 & tables &  &  &  & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  &  &  &  &  &  &  &  \\ 
+  6 & R2HTML & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  & $\backslash$CheckmarkBold &  &  &  & $\backslash$CheckmarkBold &  &  &  &  &  &  &  \\ 
+  7 & xtable & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold & $\backslash$CheckmarkBold &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ 
+  8 & r2lh & $\backslash$CheckmarkBold &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ 
+  9 & rockchalk &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & $\backslash$CheckmarkBold &  &  \\ 
+  10 & Hmisc &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+\end{document}

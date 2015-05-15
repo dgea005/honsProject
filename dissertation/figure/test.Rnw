@@ -1,0 +1,167 @@
+\documentclass[nohyper,justified]{tufte-handout}
+ 
+\usepackage{xltxtra,fontspec,xunicode}
+\usepackage{sectsty} %% change fonts for sections
+\setmainfont{Source Sans Pro Light}
+ 
+\begin{document}
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+ 
+<<include=FALSE>>=
+opts_chunk$set(concordance=TRUE)#,dev='tikz')
+@
+ 
+ 
+<<eval=TRUE,echo=FALSE,results='hide',warning=FALSE,message=FALSE,error=FALSE>>=
+require(RColorBrewer)
+require(quantmod)
+require(PerformanceAnalytics)
+require(xtsExtra)
+source("C:\\Users\\Kent.TLEAVELL_NT\\Dropbox\\Leavell\\2013-02 yen trade analysis\\plotxts_custom.r")
+ 
+jpy <- getSymbols("DEXJPUS",src="FRED",auto.assign=FALSE)
+ 
+startdates = c("2010-08-20",
+"2011-02-07",
+"2011-03-30",
+"2011-10-14",
+# "2012-04-03",
+"2012-06-21",
+"2012-10-25"
+)
+enddates = c("2010-10-08",
+"2011-03-02",
+"2011-06-01",
+"2012-05-31",
+"2012-08-22",
+format(Sys.Date(),"%Y-%m-%d"))
+ 
+custom.panel <- function(index,x,...) {
+default.panel(index,x,...)
+abline(h=pretty(c(par("yaxp")[1],par("yaxp")[2]),n=par("yaxp")[3]),col="gray60",lty=3)
+abline(h=par("usr")[3], col="black")
+axis(side=2,col="gray60",col.axis="black",lwd=0,lwd.ticks=FALSE,las=1,
+at=pretty(c(par("yaxp")[1],par("yaxp")[2]),n=abs(par("yaxp")[3])),
+labels=pretty(c(par("yaxp")[1],par("yaxp")[2]),n=abs(par("yaxp")[3])))
+points(x=index[which(index(x) %in% as.Date(startdates))],
+y=x[which(index(x) %in% as.Date(startdates)),],cex=1,pch=19,
+col="darkolivegreen3")
+points(x=index[which(index(x) %in% as.Date(enddates))],
+y=x[which(index(x) %in% as.Date(enddates)),],cex=1,pch=19,
+col="indianred3")
+#to add reference lines to indicate entry level
+#I'm not sure it is necessary but if you like it uncomment below
+#for(i in 1:(length(startdates))) {
+# segments(x0=index[which(index(x) == as.Date(startdates[i]))],
+# x1=index[which(index(x) == as.Date(enddates[i]))],,
+# y0=x[which(index(x) == as.Date(startdates[i])),],
+# y1=x[which(index(x) == as.Date(startdates[i])),])
+#}
+}
+@
+{\huge Japanese Yen as a Macro Opportunity}
+\newline
+{\large ME}
+\newline
+{\large March 13, 2013}
+\newline
+\newline
+\section{Opportunities by Time Scale}
+We subdivide market opportunities into three time-scale categories--short-term, cyclical, and secular. The -------- philosophy is designed to focus on macro secular opportunities. -------- ignores short-term and only pursues cyclical in the absence of or as a supplement to secular. Macro or secular trades require patience and persistence. For this reason, these macro trades get missed by more mainstream and popular investment approaches. These opportunites are rare and infrequent but lucrative. I often say that one of the best gauges of the quality of a macro trade is how big a book I can write. The bigger the book the more the evidence I have and the more time I have had to write. This is certainly far different from the quick get-rich schemes that dominate the media and get popularized by market lore.
+\section{Japanese Yen (\textyen) as an Example of Macro Opportunity}
+The Japanese Yen (\textyen) provides a very instructive view of a secular macro opportunity. We certainly don't want to upset the fickle and vindictive market gods, but I would like to use this as a good example of how we approach these opportunities.
+ 
+ 
+ 
+\noindent
+The Japanese \textyen \hspace{1pt} strengthened by 370\% versus the US\$ from 1970 to 2009, but just because something goes up a lot over a long time does not mean it will necesarily come down.
+\begin{figure}[!htb]
+\caption{Japanese \textyen \hspace{1pt} / US\$ Since 1970\newline
+\scriptsize{
+While not specifically relevant to this chart, I include the shaded areas and dots to put the recent holding periods in the context of a much larger process. The light gray shaded areas represent holding periods for --------. Green dots are entry dates, and red dots are exit dates.\newline\newline\newline source: Federal Reserve Economic Data (FRED) from the Federal Reserve Bank of St. Louis}}
+\vspace{-30pt}
+<<echo=FALSE,eval=TRUE,fig.width=12,fig.height=6,warning=FALSE,message=FALSE,error=FALSE>>=
+plot.xts(1/jpy,
+col = brewer.pal(9,"Blues")[c(7)], #get two blues that will look ok
+lwd = 2, #line width; will do 2
+las = 1, #do not rotate y axis labels
+bty="n",
+auto.grid=FALSE,
+major.format="%b %Y",
+minor.ticks=FALSE,
+col.axis="transparent",
+yax.loc="none",
+cex.axis=0.8,
+panel=custom.panel,
+# auto.legend = TRUE, #let plot.xts do the hard work on the legend
+# legend.loc = c("topleft",NA, NA), #just do legend on the first screen
+# legend.pars = list(bty = "n", horiz=TRUE), #make legend box transparent and legend horizontal
+main = NA, #will do title later so we have more control
+blocks = list(start.time=startdates, #overlay blocks for periods owned
+end.time=enddates,col="gray90"))
+@
+\end{figure}
+\vspace{-10pt}
+ 
+ 
+\section{Catalysts for Reversal}
+We must explore the underlying conditions for the 40 year trend, and then think through the potential catalysts for a reversal. Often, these initial catalysts are short-term mean reversion and fundamental overvaluation generated by the last wave of fickle buyers who buy just chasing momentum. During this last stage, the market prefers to extrapolate the trend ignoring slow moving barely perceptible environmental shifts. Throughout market history, we find numerous examples where the market misses these shifts.
+ 
+ 
+ 
+\noindent
+When the supporting conditions for the move have eroded while the market has overvalued/undervalued the instrument on both an absolute and relative basis, we begin to closely monitor the price for moves in the direction opposite to the trend. A secular move of this magnitude takes a very long time to turn. These short term moves are generally met with market disbelief or apathy as sellers have grown weary and reluctant. However, the combination of overvaluation and erosion of supportive conditions renders an opportunity ripe for positive or self-fulfilling feedback.
+ 
+ 
+\section{Managing the Entry}
+Since perfect timing of the top/bottom is impossible, we very systematically begin to trade. The last thing we want to happen is to lose too much money or lose confidence by the time the move finally develops, so we are very patient and persistent. We began this process in Fall 2010 selling the Japanese \textyen \hspace{1pt} as shown in the chart (reversed to US\$/\textyen) below, so up is good. Each time we shorted (shaded areas in the chart) we would accept very little risk and exit quickly if the price moved aversely.
+ 
+\begin{figure}
+\caption{US\$ / Japanese \textyen \hspace{1pt} Since Dec. 2009\newline
+\scriptsize{
+Light gray shaded areas represent holding periods for --------. Green dots are entry dates, and red dots are exit dates.\newline\newline\newline source: Federal Reserve Economic Data (FRED) from the Federal Reserve Bank of St. Louis}}
+\vspace{-30pt}
+<<echo=FALSE,eval=TRUE,fig.width=12,fig.height=6,warning=FALSE,message=FALSE,error=FALSE>>=
+plot.xts(jpy["2009-12::"],
+col = brewer.pal(9,"Blues")[c(7)], #get two blues that will look ok
+lwd = 2, #line width; will do 2
+las = 1, #do not rotate y axis labels
+bty="n",
+auto.grid=FALSE,
+major.format="%b %Y",
+major.ticks="years",
+minor.ticks=FALSE,
+col.axis="transparent",
+yax.loc="none",
+cex.axis=0.8,
+panel=custom.panel,
+# auto.legend = TRUE, #let plot.xts do the hard work on the legend
+# legend.loc = c("topleft",NA, NA), #just do legend on the first screen
+# legend.pars = list(bty = "n", horiz=TRUE), #make legend box transparent and legend horizontal
+main = NA, #will do title later so we have more control
+blocks = list(start.time=startdates, #overlay blocks for periods owned
+end.time=enddates,col="gray90"))
+ 
+@
+\end{figure}
+\vspace{-10pt}
+ 
+ 
+\noindent
+Remember for positive feedback to engage the first thing that needs to happen is a price move in the appropriate direction. Our current short is actually the 6th time we have shorted the \textyen \hspace{1pt}. Now that the first step in the positive feedback loop has occurred, we become much more stubborn and insist on fully benefitting from a much more substantial and long-term process. If we refer back to the long-term chart, the recent move is barely perceptible.
+ 
+ 
+\section{Once In a Lifetime}
+During an investing career of 10-30 years, macro opportunities might only occur 1-5 times. Unless an investor specifically focuses on studying these rare events, missing these "once-in-a-lifetime" opportunities is common. Fortunately, we have centuries of market history that can instruct us to discover, pursue, and hopefully profit from these unique occurrences.
+\begin{quote}
+After spending many years in Wall Street and after making and losing millions of dollars I want to tell you this: It never was my thinking that made big money for me. It was always my sitting. Got that? My sitting tight! It is no trick at all to be right on the market...Men who can both be right and sit tight are uncommon. I found it one of the hardest things to learn. \par\emph{Reminiscences of a Stock Operator\newline by Edwin Lefevre}
+\end{quote}
+ 
+\begin{center}
+\line(1,0){450pt}
+\end{center}
+\small\textbf{Past performance does not guarantee future results. This should not be considered investment advice.}
+ 
+\end{document}

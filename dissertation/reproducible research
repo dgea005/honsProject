@@ -1,0 +1,11 @@
++ Reproducible Research with R and RStudio
+	- By Christopher Gandrud
+
+		+ There are two index mentions of xtable in this book
+		+ .159
+			- Tables of parameter estimates, descriptive statistics, and so on can be important tools for describing findings and presenting research findings
+			- Manually reproducing results is usually too slow and has the risk of introducing errors
+			- The chapter details the use of xtable in knitr
+			- Mentions that xtable is generally good but if you have model results from a specific model or that are required in a specific format it can be more convenient to make use of other packages such as stargazer
+			- Has a quick demonstration of xtable usage on p.172
+			

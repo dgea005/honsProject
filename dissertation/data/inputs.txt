@@ -1,0 +1,20 @@
+Packages.v.Inputs	data.frame	matrix	lm	coxph	summary	glm	lme	aov	ftable	table	mtable	xtab	ts	zoo	prcomp
+xtable	ü	ü	ü	ü	ü	ü		ü		ü		ü	ü	ü	ü
+R2HTML	ü	ü	ü	ü	ü			ü	ü	ü		ü	ü		ü
+stargazer	ü		ü	ü	ü	ü	ü	ü							
+rms			ü	ü	ü			ü							
+apsrtable			ü	ü	ü	ü									
+texreg			ü	ü		ü	ü								
+memisc		ü	ü						ü		ü				
+Hmisc	ü	ü							ü						
+taRifx	ü		ü				ü								
+fdth	ü	ü													
+hwriter	ü	ü													
+rockchalk			ü			ü									
+quantreg		ü			ü										
+reporttools	ü			ü											
+hwriterPlus	ü	ü													
+suRtex	ü	ü													
+r2lh	ü														
+tables	ü														
+etable	ü														

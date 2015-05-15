@@ -1,0 +1,11 @@
+HTMLFeatures	caption	rownames	colnames	alignment	tags	css	spacing	dec.pl	center	nesting	colours	Border	Width	title	size	bold	to file	Lines	MathJax
+hwriterPlus		ü	ü	ü	ü	ü	ü		ü	ü	ü	ü	ü	ü	ü				ü
+hwriter		ü	ü	ü	ü	ü	ü		ü	ü	ü	ü	ü						
+stargazer	ü	ü	ü	ü			ü	ü						ü	ü			ü	
+texreg	ü				ü	ü		ü	ü							ü			
+tables				ü	ü	ü	ü												
+R2HTML	ü	ü						ü				ü							
+xtable	ü	ü	ü																
+r2lh	ü																		
+rockchalk																	ü		
+Hmisc																			
