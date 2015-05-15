@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{longtable}
+
+\begin{document}
+
+<<addtorow2, echo = FALSE, results = "asis">>=
+library(xtable)
+x<-matrix(rnorm(1000), ncol = 10)
+addtorow<-list()
+addtorow$pos<-list(c(0))
+addtorow$command<-c(paste(
+
+  "\\multicolumn{1}{|c|}{\\textbf{1}} & \\multicolumn{1}{c|}{\\textbf{2}} & \\multicolumn{1}{c|}{\\textbf{3}} 
+   & \\multicolumn{1}{c|}{\\textbf{4}} & \\multicolumn{1}{c|}{\\textbf{5}} & \\multicolumn{1}{c|}{\\textbf{6}} & \\multicolumn{1}{c|}{\\textbf{7}}
+   & \\multicolumn{1}{c|}{\\textbf{8}} & \\multicolumn{1}{c|}{\\textbf{9}} & \\multicolumn{1}{c|}{\\textbf{10}}\\\\ \n", 
+  "\\hline \n",   
+  "\\endfirsthead \n",
+  
+"\\multicolumn{10}{c} \n",
+"{{\\bfseries \\tablename\ \\thetable{} -- continued from previous page}} \\\\ \n",
+  "\\hline \n",
+  "\\multicolumn{1}{|c|}{\\textbf{1}} & \\multicolumn{1}{c|}{\\textbf{2}} & \\multicolumn{1}{c|}{\\textbf{3}} 
+   & \\multicolumn{1}{c|}{\\textbf{4}} & \\multicolumn{1}{c|}{\\textbf{5}} & \\multicolumn{1}{c|}{\\textbf{6}} & \\multicolumn{1}{c|}{\\textbf{7}}
+   & \\multicolumn{1}{c|}{\\textbf{8}} & \\multicolumn{1}{c|}{\\textbf{9}} & \\multicolumn{1}{c|}{\\textbf{10}}\\\\ \n",
+  "\\hline \n",
+  "\\endhead", 
+  
+"\\hline \n \\multicolumn{10}{|r|}{{Continued on next page}} \\\\ \\hline \n",
+"\\endfoot \n",
+
+
+"\\endlastfoot", sep = ""))
+
+xbig2 <- xtable(x, caption = "caption for top of table")
+print(xbig2, tabular.environment = "longtable", floating = FALSE,
+include.rownames=FALSE, include.colnames = FALSE, add.to.row=addtorow,
+caption.placement = "top")
+@
+
+
+\end{document}
